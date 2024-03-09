@@ -50,9 +50,14 @@ async def list_items():
 # the following shows a string
 
 
-@app.get("/items/{item_id}")
-async def get_items(item_id):
-    return {"item_id": item_id}
+# @app.get("/items/{item_id}")
+# async def get_items(item_id):
+#     return {"item_id": item_id}
 
 # http://localhost:8000/items/2000 returns
 # {"item_id":"2000"}
+
+# to retun id as an integer,
+@app.get("/items/{item_id}")
+async def get_items(item_id: int):
+    return {"item_id": item_id}
