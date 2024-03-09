@@ -35,6 +35,6 @@ async def put():
 # Changing api param
 
 
-@app.get("/user", description="This is a description about users", deprecated=True)
+@app.get("/user", description="This is a description about users")
 async def get_user_info(name: str, email: str):
     return {"name": name, "email": email}
