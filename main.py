@@ -1,7 +1,7 @@
 # -----------------base of the app lives here -------------------
 
 from fastapi import FastAPI
-from enum import Enum
+from enum import Enum  # for defining a fixed set of named values
 
 # instantiate app
 app = FastAPI()
