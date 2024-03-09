@@ -1,6 +1,7 @@
 # -----------------base of the app lives here -------------------
 
 from fastapi import FastAPI
+from enum import Enum
 
 # instantiate app
 app = FastAPI()
@@ -81,3 +82,25 @@ async def get_user_info():
 @app.get("/user_info/{user_name}")
 async def get_user_info(user_name: str):
     return {"message": f"the current user is {user_name}"}
+
+
+class Foods(str, Enum):
+    fruits = "fruits"
+    vegetables = "vegetables"
+    dairy = "dairy"
+
+
+@app.get("/foods/{food_name}")
+async def get_foods(food_name: Foods):
+    if food_name == Foods.dairy:
+        return {"food_name": food_name, "message": "Keep up the dairies"}
+
+    if food_name.value == "fruits":
+        return {
+            "food_name": food_name,
+            "message": "You are supper healthy"
+        }
+    return {
+        "food_name": food_name,
+        "message": f"{food_name} is great too"
+    }
