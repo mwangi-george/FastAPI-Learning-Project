@@ -61,3 +61,9 @@ async def list_items():
 @app.get("/items/{item_id}")
 async def get_items(item_id: int):
     return {"item_id": item_id}
+
+
+# to retun id as an integer,
+@app.get("/names/{item_name}")
+async def get_item_names(item_name: str):
+    return {"item_id": item_name}
