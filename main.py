@@ -67,3 +67,17 @@ async def get_items(item_id: int):
 @app.get("/names/{item_name}")
 async def get_item_names(item_name: str):
     return {"item_id": item_name}
+
+
+# order of routes matters
+# specific end points must come before dynamic end points as follows
+
+
+@app.get("/user_info/me")
+async def get_user_info():
+    return {"message": "this is the current user"}
+
+
+@app.get("/user_info/{user_name}")
+async def get_user_info(user_name: str):
+    return {"message": f"the current user is {user_name}"}
