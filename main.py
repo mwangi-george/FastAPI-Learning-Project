@@ -2,6 +2,7 @@
 
 from fastapi import FastAPI
 from enum import Enum  # for defining a fixed set of named values
+from typing import Optional
 
 # instantiate app
 app = FastAPI()
@@ -127,4 +128,21 @@ async def list_items(skip: int = 0, limit: int = 10):
 # http://localhost:8000/list_items?skip=2
 
 
-#
+# optional parameters
+@app.get("/users/{user_id}")
+async def get_user_info(user_id: int, q: Optional[str] = None):
+    if q:
+        return {"user_id": user_id, "query": q}
+    return {"user_id", user_id}
+
+my_info = {
+    "name": "George",
+    "height": 178,
+    "email": "george178@yahoo.com"
+}
+
+
+@app.get("/api")
+async def get_my_info(q: Optional[str] = None):
+    if q in my_info.keys():
+        return my_info[q]
