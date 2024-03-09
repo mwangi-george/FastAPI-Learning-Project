@@ -104,3 +104,24 @@ async def get_foods(food_name: Foods):
         "food_name": food_name,
         "message": f"{food_name} is great too"
     }
+
+
+# query parameters
+fake_items_db = [
+    {"item_name": "faa"},
+    {"item_name": "fee"},
+    {"item_name": "fii"},
+    {"item_name": "foo"},
+    {"item_name": "fuu"},
+    {"item_name": "baa"},
+    {"item_name": "bee"}
+]
+
+
+@app.get("/list_items")
+async def list_items(skip: int = 0, limit: int = 10):
+    return fake_items_db[skip: skip + limit]
+
+# in the browser
+# http://localhost:8000/list_items?limit=2
+# http://localhost:8000/list_items?skip=2
