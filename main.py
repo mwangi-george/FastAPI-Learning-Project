@@ -38,3 +38,16 @@ async def put():
 @app.get("/user", description="This is a description about users")
 async def get_user_info(name: str, email: str):
     return {"name": name, "email": email}
+
+
+@app.get("/items")
+async def list_items():
+    return {"message": "List of items"}
+
+# return a specific item, say by id 5
+# http://localhost:8000/items/5
+
+
+@app.get("/items/{item_id}")
+async def get_items(item_id):
+    return {"item_id": item_id}
