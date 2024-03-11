@@ -146,3 +146,15 @@ my_info = {
 async def get_my_info(q: Optional[str] = None):
     if q in my_info.keys():
         return my_info[q]
+
+
+@app.get("/owners/{owner_id}/items/{item_id}")
+async def get_owner_items(owner_id: int, item_id: str, q: Optional[str] = None, retired=False):
+    item = {"item_id": item_id, "owner_id": owner_id}
+    if q:
+        item.update({"q": q})
+    if not retired:
+        item.update(
+            {"description": "You are retired", "next": "Go home"}
+        )
+    return item
