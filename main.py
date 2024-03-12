@@ -115,7 +115,8 @@ fake_items_db = [
     {"item_name": "foo"},
     {"item_name": "fuu"},
     {"item_name": "baa"},
-    {"item_name": "bee"}
+    {"item_name": "bee"},
+    {"item_name": "bii"}
 ]
 
 
