@@ -3,6 +3,7 @@
 from fastapi import FastAPI
 from enum import Enum  # for defining a fixed set of named values
 from typing import Optional
+import uvicorn
 
 # instantiate app
 app = FastAPI()
@@ -159,3 +160,7 @@ async def get_owner_items(owner_id: int, item_id: str, q: Optional[str] = None, 
             {"description": "You are retired", "next": "Go home"}
         )
         return item
+
+
+if __name__ == "__main__":
+    uvicorn.run(app=app)
